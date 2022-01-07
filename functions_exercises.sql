@@ -70,3 +70,7 @@ SELECT max(salary) FROM salaries;
 
 SELECT Lower(CONCAT(SUBSTR(first_name, 1, 1), SUBSTR(last_name, 1, 4), '_', SUBSTR(birth_date, 6, 2),SUBSTR(birth_date, 3, 2))) AS emp_username
 FROM employees;
+
+SELECT max(salary) AS max_salary, min(salary) AS min_salary
+FROM salaries
+WHERE to_date like '9999%';
