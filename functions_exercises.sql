@@ -1,6 +1,6 @@
 -- copy of ORDER BY text
 
-SELECT *
+SELECT *  
 FROM employees
 WHERE first_name IN ('Irena', 'Vidya', 'Maya')
 ORDER BY first_name;
@@ -56,7 +56,17 @@ AND last_name LIKE '%e';
 SELECT datediff(hire_date, curdate()) AS days_with_company
 FROM employees
 WHERE birth_date LIKE '%-12-25'
-AND hire_date BETWEEN '1990-01-01' AND '1999-12-31'
+AND hire_date LIKE '199%'
 ORDER BY days_with_company;
 
+SELECT min(salary) FROM salaries;
 
+# min salary is $38,623
+
+SELECT max(salary) FROM salaries;
+
+# max salary is $158,220
+
+
+SELECT Lower(CONCAT(SUBSTR(first_name, 1, 1), SUBSTR(last_name, 1, 4), '_', SUBSTR(birth_date, 6, 2),SUBSTR(birth_date, 3, 2)))
+FROM employees;
