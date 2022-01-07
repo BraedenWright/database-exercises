@@ -33,8 +33,9 @@ WHERE last_name NOT LIKE 'E%'
 
 SELECT DISTINCT *
 FROM employees
-WHERE last_name LIKE '%e';
-#7.     899 employees start and end with E.  24,292 end in E, regardless of start
+WHERE last_name LIKE '%e'
+AND last_name LIKE 'E%';
+#7.     23,393 employees start and end with E.  
 
 SELECT DISTINCT *
 FROM employees
