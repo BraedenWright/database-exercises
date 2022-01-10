@@ -44,11 +44,64 @@ GROUP BY gender;
 # M (441), F (268)
 
 
-SELECT DISTINCT Lower(CONCAT(SUBSTR(first_name, 1, 1),
-       SUBSTR(last_name, 1, 4), 
-          '_', 
-            SUBSTR(birth_date, 6, 2),
-             SUBSTR(birth_date, 3, 2))) 
-          AS emp_username
+SELECT DISTINCT Lower(
+                     CONCAT(SUBSTR(first_name, 1, 1),
+                            SUBSTR(last_name, 1, 4), 
+                            '_', 
+                            SUBSTR(birth_date, 6, 2),
+                            SUBSTR(birth_date, 3, 2))
+                            ) AS username
 FROM employees
-GROUP BY emp_username;
+GROUP BY username
+ORDER BY username;
+
+
+# more aggregate function practice
+#avg salary
+SELECT emp_no, AVG(salary)
+FROM salaries
+GROUP BY emp_no;
+
+
+
+#count of number of employees in each dept
+SELECT dept_no, COUNT(emp_no)
+FROM dept_emp
+GROUP BY dept_no;
+
+
+
+#How many salaries for each employee
+SELECT emp_no, COUNT(salary)
+FROM salaries 
+GROUP BY emp_no;
+
+
+
+#Min and Max of each employees
+SELECT emp_no, MAX(salary), MIN(salary)
+FROM salaries
+GROUP BY emp_no;
+
+
+
+#standard deviation
+SELECT emp_no, STDDEV(salary)
+FROM salaries
+GROUP BY emp_no;
+
+
+
+#max salary over $150,000
+SELECT emp_no, MAX(salary)
+FROM salaries
+GROUP BY emp_no, salary
+HAVING salary > 150000;
+
+
+
+#avg salary between $80k - $90k
+SELECT emp_no, AVG(salary)
+FROM salaries
+GROUP BY emp_no, salary
+HAVING salary > 80000 AND salary < 90000;
