@@ -55,6 +55,25 @@ FROM employees
 GROUP BY username
 ORDER BY username;
 
+#bonus-figure out how many duplicate accounts
+SELECT
+	COUNT(t.number_of_duplicates) AS unique_duplicate_usernames,
+	SUM(t.number_of_duplicates) AS number_of_duplicate_usernames
+FROM (SELECT 
+		LOWER(
+				CONCAT(
+					SUBSTR(first_name, 1, 1),
+					SUBSTR(last_name, 1, 4),
+					'_',
+					SUBSTR(birth_date, 6, 2),
+					SUBSTR(birth_date, 3, 2)
+					)
+				) AS username,
+	COUNT(*) AS number_of_duplicates
+	FROM employees
+	GROUP BY username
+	HAVING number_of_duplicates > 1) AS t;
+
 
 # more aggregate function practice
 #avg salary
