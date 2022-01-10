@@ -86,6 +86,7 @@ GROUP BY emp_no;
 #count of number of employees in each dept
 SELECT dept_no, COUNT(emp_no)
 FROM dept_emp
+WHERE to_date > NOW()
 GROUP BY dept_no;
 
 
