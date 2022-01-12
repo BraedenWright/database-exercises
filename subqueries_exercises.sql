@@ -63,18 +63,22 @@ WHERE emp_no IN
 #6. 
 
 # max current salary?
-SELECT max(salary) FROM salaries WHERE to_date > now();
+SELECT max(salary) 
+FROM salaries 
+WHERE to_date > now();
 
 # 1 std for current salary?
-SELECT std(salary) FROM salaries WHERE to_date > now();
+SELECT std(salary) 
+FROM salaries 
+WHERE to_date > now();
 
 SELECT count(*) AS 'current salaries within 1 std dev of current highest salary'
 FROM salaries
 WHERE to_date > now()
 AND salary > (
-(SELECT max(salary) 
-FROM salaries 
-WHERE to_date > now()) - 
+	(SELECT max(salary) 
+	FROM salaries 
+	WHERE to_date > now()) - 
 (SELECT std(salary) FROM salaries WHERE to_date > now())
 );
 
