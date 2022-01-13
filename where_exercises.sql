@@ -1,16 +1,16 @@
 USE `employees`;
 
-SELECT DISTINCT *
+SELECT DISTINCT first_name, last_name
 FROM `employees`
 WHERE `first_name` IN ('Irena', 'Vidya', 'Maya');
-#2.  709 records pulled
+#2.  656 records pulled
 
 SELECT DISTINCT first_name, last_name
 FROM `employees`
 WHERE first_name = 'Irena' 
 OR first_name = 'Vidya' 
 OR first_name = 'Maya';
-#3.   656  records returned.  Not the same as using IN
+#3.   656  records returned. the same as using IN
 
 SELECT *
 FROM employees
